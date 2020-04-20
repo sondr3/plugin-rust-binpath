@@ -1,14 +1,14 @@
-function __node_binpath_cwd -v PWD
-  set -l node_modules_path "$PWD/node_modules/.bin"
-  if test -e "$node_modules_path"
-    set -g __node_binpath "$node_modules_path"
-    set -x PATH $PATH $__node_binpath
+function __rust_binpath_cwd -v PWD
+  set -l rust_target_path "$PWD/target/release/"
+  if test -e "$rust_target_path"
+    set -g __rust_binpath "$rust_target_path"
+    set -x PATH $PATH $__rust_binpath
   else
-    set -q __node_binpath
-      and set -l index (contains -i -- $__node_binpath $PATH)
+    set -q __rust_binpath
+      and set -l index (contains -i -- $__rust_binpath $PATH)
       and set -e PATH[$index]
-      and set -e __node_binpath
+      and set -e __rust_binpath
   end
 end
 
-__node_binpath_cwd $PWD
+__rust_binpath_cwd $PWD

@@ -1,2 +1,2 @@
-functions -e __node_binpath_cwd
-set -e __node_binpath
+functions -e __rust_binpath_cwd
+set -e __rust_binpath
